@@ -50,6 +50,7 @@ body {
 
 /* Ajuste del texto encima de la imagen */
 .apertura-text {
+  position: relative; /* Necesario para que .icono-apertura se posicione respecto a este */
   text-align: center;
   margin: auto; /* Centra en vertical y horizontal */
   max-width: 800px;
@@ -58,11 +59,19 @@ body {
 
 .apertura-text h1 {
   font-size: 2.5em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .apertura-text p {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 /* Icono */
+.icono-apertura {
+  position: absolute; /* Saca al ícono del flujo */
+  bottom: 140px; /* Lo colocas en la parte baja del header */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: white;
+}
