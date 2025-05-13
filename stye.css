@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/*>>>>>>>>> Apertura <<<<<<<<<*/
+/* Ajustes de imagen */
+.apertura {
+  background-image: url("Assets/Apertura.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ocupa el 100% del alto de la ventana */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+/* Capa oscura sobre la imagen */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cubre todo el ancho */
+  height: 100%; /* Cubre todo el alto */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Ajustes del Navbar */
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  z-index: 1;
+  position: relative;
+}
+
+.nav a {
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  color: white;
+}
+
+/* Ajuste del texto encima de la imagen */
+.apertura-text {
+  text-align: center;
+  margin: auto; /* Centra en vertical y horizontal */
+  max-width: 800px;
+  z-index: 1;
+}
+
+.apertura-text h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.apertura-text p {
+  font-size: 1.2em;
+}
+
+/* Icono */
