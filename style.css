@@ -8,6 +8,7 @@ body {
   background-color: black;
   color: white;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden; /* Evita el scroll */
 }
 
 /* Tipografías */
@@ -22,7 +23,7 @@ h1, h2, h3 {
   font-weight: 400;
 }
 
-/*>>>>>>>>> Apertura <<<<<<<<<*/
+/*>>>>>>>>> Apertura (HERO) <<<<<<<<<*/
 /* Ajustes de imagen */
 .apertura {
   background-image: url("Assets/Apertura.jpg");
@@ -47,58 +48,6 @@ h1, h2, h3 {
   z-index: 0;
 }
 
-/* Ajustes del Navbar */
-.nav {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  gap: 40px;
-  z-index: 1;
-  position: relative;
-}
-
-.menu-toggle {
-  display: none; /* Oculta el menú en pantallas grandes */
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 2;
-}
-
-/* Estilos para el menú de navegación */
-.nav {
-  list-style: none; /* Quita los puntos de la lista */
-  display: flex;
-  gap: 40px;
-}
-
-.nav a {
-  text-decoration: none; /* Quita el subrayado de los enlaces */
-  color: white;
-  position: relative;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #D4AF37; /* Cambia el color al pasar el mouse */
-}
-
-.nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #D4AF37; /* Color dorado */
-  left: 50%;
-  bottom: -5px; /* Espacio entre el texto y la línea */
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.nav a:hover::after {
-  width: 100%; /* Ancho completo al pasar el mouse */
-  left: 0; /* Alinea la línea con el texto */
-}
-
 /* Ajuste del texto encima de la imagen */
 .apertura-text {
   position: relative; /* Necesario para que .icono-apertura se posicione respecto a este */
@@ -120,7 +69,7 @@ h1, h2, h3 {
   line-height: 1.6;
 }
 
-/* Icono */
+/* Icono de flecha */
 .icono-apertura {
   position: absolute; /* Saca al ícono del flujo */
   bottom: 140px; /* Lo colocas en la parte baja del header */
@@ -145,12 +94,98 @@ h1, h2, h3 {
   }
 }
 
+
+/*------------Navegación-----------*/
+/* Ajustes del header */
+/* Contenedor de texto principal */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 40px; /* Espacio alrededor del header */
+  position: relative; /* Necesario para el menú hamburguesa */
+  z-index: 100; /* Asegúrate de que esté por encima de la capa oscura */
+}
+
+/* Lista de navegación */
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Estilos de los enlaces */
+.nav a {
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  color: white;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 5px 0; /* Espacio alrededor del texto */
+}
+
+/* Efecto de línea dorada */
+.nav a:hover {
+  color: #D4AF37; /* Cambia el color al pasar el mouse */
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0; /* Centra la línea */
+  background-color: #D4AF37; /* Color dorado */
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%; /* Ancho completo al pasar el mouse */
+  left: 0; /* Alinea la línea con el texto */
+}
+
+/* Botón hamburguesa (oculto en desktop) */
+.menu-toggle {
+  display: none; /* Oculta el menú en pantallas grandes */
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 101;
+  color: white;
+  position: fixed; /* Fija el menú hamburguesa en la pantalla */
+  top: 30px; /* Espacio desde la parte superior */
+  right: 30px; /* Espacio desde la derecha */
+}
+
+/*Estilos para movil*/
 /* Estilos responsivos */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* Muestra el menú hamburguesa */
+
+  /* Ajustes generales para móvil */
+  .apertura {
+    padding: 20px; /* Espacio alrededor del header */
   }
 
+  .apertura-text h1 {
+    font-size: 1.8em; /* Tamaño de fuente más pequeño */
+  }
+
+  /* Botón hamburguesa visible */
+  .menu-toggle {
+    display: block; /* Muestra el menú hamburguesa */
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 101;
+    color: white;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    transition: transform 0.3s ease;
+  }
+
+
+  /* Menú oculto por defecto */
   .nav {
     position: fixed; /* Fija el menú en la pantalla */
     top: 0; /* Espacio desde la parte superior */
@@ -163,23 +198,39 @@ h1, h2, h3 {
     justify-content: center; /* Centra los elementos verticalmente */
     gap: 30px; /* Espacio entre los elementos */
     transition: right 0.3s ease; /* Transición suave */
-    z-index: 1; /* Asegúrate de que esté por encima de la capa oscura */
+    z-index: 100; /* Asegúrate de que esté por encima de la capa oscura */
+    margin: 0; /* Quita el margen */
+    padding: 0; /* Quita el padding */
   }
 
+  /* Menú visible cuando tiene clase active */
   .nav.active {
     right: 0; /* Muestra el menú al hacer clic */
   }
 
-  .apertura-text h1 {
-    font-size: 1.8em; /* Tamaño de fuente más pequeño */
+  /* Elementos del menú */
+  .nav li {
+    width: 100%; /* Ancho completo */
+    text-align: center; /* Centra el texto */
   }
 
-  .apertura {
-    padding: 20px; /* Espacio alrededor del header */
+  .nav a {
+    display: block; /* Hace que el enlace ocupe todo el ancho */
+    width: 100%; /* Ancho completo */
+    text-align: center; /* Centra el texto */
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    padding: 20px 0; /* Espacio alrededor del texto */
   }
+
+  /* Ocultamos la línea dorada en móvil para mejor legibilidad */
+  .nav a::after {
+    display: none; /* Quita la línea debajo del texto */
+  }
+
   
 }
 
+/* Estilos para pantallas muy pequeñas */
 @media (max-width: 480px) {
   .apertura-text h1 {
     font-size: 1.5em; /* Tamaño de fuente más pequeño */
@@ -189,7 +240,38 @@ h1, h2, h3 {
     font-size: 0.9em; /* Tamaño de fuente más pequeño */
   }
 
+  /* Menú ocupa más espacio en pantallas pequeñas */
+  .nav {
+    width: 85%;
+  }
+
   .icono-apertura {
     font-size: 2rem; /* Tamaño de ícono más pequeño */
   }
 }
+
+/* ===== SECCIÓN PRINCIPAL Y FOOTER ===== */
+section {
+  /* Estilos para futuras secciones */
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+footer {
+  /* Estilos para el footer */
+  padding: 30px 20px;
+  text-align: center;
+  background-color: #111;
+}
+
+
+
+
+
+
+
+
+
+
+
+
